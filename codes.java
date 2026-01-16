@@ -149,7 +149,139 @@ class Solution {
     }
 }
 
-    
+
+
+
+
+
+5.Count the triplets
+
+Given an array arr, count the number of distinct triplets (a, b, c) such that:
+
+a + b = c
+
+Each triplet is counted only once, regardless of the order of a and b.
+
+
+import java.util.*;
+
+class Solution {
+    int countTriplet(int arr[]) {
+
+        int n = arr.length;
+        int count = 0;
+
+        Arrays.sort(arr);
+
+        // Fix c one by one (from largest to smallest)
+        for (int i = n - 1; i >= 2; i--) {
+
+            int left = 0;
+            int right = i - 1;
+
+            while (left < right) {
+
+                int sum = arr[left] + arr[right];
+
+                if (sum == arr[i]) {
+                    count++;
+                    left++;
+                    right--;
+                }
+                else if (sum < arr[i]) {
+                    left++;
+                }
+                else {
+                    right--;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+6.Union of Arrays with Duplicates
+You are given two arrays a[] and b[], return the Union of both the arrays in any order.
+
+The Union of two arrays is a collection of all distinct elements present in either of the arrays. If an element appears more than once in one or both arrays, it should be included only once in the result.
+
+Note: Elements of a[] and b[] are not necessarily distinct.
+
+
+    import java.util.*;
+
+class Solution {
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        int i = 0, j = 0;
+        int n = a.length, m = b.length;
+
+        while (i < n && j < m) {
+
+            if (a[i] < b[j]) {
+                if (result.size() == 0 || result.get(result.size() - 1) != a[i]) {
+                    result.add(a[i]);
+                }
+                i++;
+            }
+            else if (a[i] > b[j]) {
+                if (result.size() == 0 || result.get(result.size() - 1) != b[j]) {
+                    result.add(b[j]);
+                }
+                j++;
+            }
+            else { // a[i] == b[j]
+                if (result.size() == 0 || result.get(result.size() - 1) != a[i]) {
+                    result.add(a[i]);
+                }
+                i++;
+                j++;
+            }
+        }
+
+        // remaining elements in a
+        while (i < n) {
+            if (result.get(result.size() - 1) != a[i]) {
+                result.add(a[i]);
+            }
+            i++;
+        }
+
+        // remaining elements in b
+        while (j < m) {
+            if (result.get(result.size() - 1) != b[j]) {
+                result.add(b[j]);
+            }
+            j++;
+        }
+
+        return result;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
