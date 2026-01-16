@@ -278,9 +278,74 @@ class Solution {
 
 
 
+7.Intersection of Arrays with Distinct
+
+Given two unsorted integer arrays a[] and b[] each consisting of distinct elements, the task is to return the count of elements in the intersection (or common elements) of the two arrays.
+
+Intersection of two arrays can be defined as the set containing distinct common elements between the two arrays. 
 
 
 
+import java.util.*;
+
+class Solution {
+    public static int intersectSize(int a[], int b[]) {
+
+        Arrays.sort(a);
+        Arrays.sort(b);
+
+        int i = 0, j = 0;
+        int count = 0;
+
+        while (i < a.length && j < b.length) {
+
+            if (a[i] < b[j]) {
+                i++;
+            }
+            else if (a[i] > b[j]) {
+                j++;
+            }
+            else { // a[i] == b[j]
+                count++;
+                i++;
+                j++;
+            }
+        }
+        return count;
+    }
+}
+
+
+
+
+
+
+8.Remove Duplicates Sorted Array
+
+You are given a sorted array arr[] containing positive integers. Your task is to remove all duplicate elements from this array such that each element appears only once. Return an array containing these distinct el
+
+
+import java.util.*;
+
+class Solution {
+    ArrayList<Integer> removeDuplicates(int[] arr) {
+        ArrayList<Integer> result = new ArrayList<>();
+        int n = arr.length;
+        if (n == 0) return result;
+
+        result.add(arr[0]); // first element always added
+
+        int i = 1; // pointer to traverse array
+        while (i < n) {
+            if (arr[i] != arr[i - 1]) {
+                result.add(arr[i]);
+            }
+            i++;
+        }
+
+        return result;
+    }
+}
 
 
 
