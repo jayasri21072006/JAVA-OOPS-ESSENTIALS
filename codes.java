@@ -351,5 +351,46 @@ class Solution {
 
 
 
+9.K-th element of two Arrays
+Given two sorted arrays a[] and b[] and an element k, the task is to find the element that would be at the kth position of the combined sorted array.
+    
+
+import java.util.*;
+class Solution {
+    public int kthElement(int a[], int b[], int k) {
+        int n = a.length;
+        int m = b.length;
+        ArrayList<Integer> result = new ArrayList<>();
+        int i = 0, j = 0;  // initialize pointers
+
+        // merge arrays until one is finished
+        while (i < n && j < m) {
+            if (a[i] < b[j]) {
+                result.add(a[i]);
+                i++;
+            } else {
+                result.add(b[j]);
+                j++;
+            }
+        }
+
+        // add remaining elements from a[]
+        while (i < n) {
+            result.add(a[i]);
+            i++;
+        }
+
+        // add remaining elements from b[]
+        while (j < m) {
+            result.add(b[j]);
+            j++;
+        }
+
+        // kth element (1-based)
+        return result.get(k - 1);
+    }
+}
+
+
 
 
