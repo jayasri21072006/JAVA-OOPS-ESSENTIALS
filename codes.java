@@ -465,5 +465,51 @@ class Solution {
 
 
 
+RECURSION
+
+1.Given a number n, print a sequence of numbers starting from n. Each next number in the sequence is n - 5, and this continues recursively until the number becomes less than or equal to 0. After that, print the sequence in reverse order, adding 5 each time, until it reaches back to the original number n.
+Note: You must not use loops.
+Input: n = 10
+Output: [10, 5, 0, 5, 10]
+Explanation: The value decreases until it is greater or equal to 0. After that it increases and stops when it becomes 10 again.
+
+
+
+    
+
+
+    class Solution {
+    public ArrayList<Integer> pattern(int n) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        // Edge case
+        if (n <= 0) {
+            result.add(n);
+            return result;
+        }
+
+        helper(n, result);
+        return result;
+    }
+
+    private void helper(int current, ArrayList<Integer> result) {
+        // Add current value while going down
+        result.add(current);
+
+        // Base condition
+        if (current <= 0) {
+            return;
+        }
+
+        // Recursive call
+        helper(current - 5, result);
+
+        // Add current value while coming back up
+        result.add(current);
+    }
+}
+
+
+
 
 
