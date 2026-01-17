@@ -4,6 +4,40 @@
 1.Two Sum - Pair with Given Sum
 Given an array arr[] of integers and another integer target. Determine if there exist two distinct indices such that the sum of their elements is equal to the target.
 
+
+
+
+2-POINTER:
+
+
+class Solution {
+    boolean twoSum(int arr[], int target) {
+
+        Arrays.sort(arr);   // required
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            int sum = arr[left] + arr[right];
+
+            if (sum == target) {
+                return true;
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
+
+BRUTE FORCE::
 class Solution {
     boolean twoSum(int arr[], int target) {
         int n = arr.length;
@@ -390,6 +424,17 @@ class Solution {
         return result.get(k - 1);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
