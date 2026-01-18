@@ -534,6 +534,32 @@ class Solution {
     }
 }
 
-    
 
+TO PRINT FULL TRIANGLE:
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        int n = 5;   // number of rows
+
+        for (int i = 0; i < n; i++) {
+
+            // 1️⃣ Print leading spaces (for centering)
+            for (int space = 0; space < n - i - 1; space++) {
+                System.out.print("  ");   // two spaces
+            }
+
+            // 2️⃣ Print Pascal values
+            long value = 1;
+            for (int j = 0; j <= i; j++) {
+                System.out.print(value + "   "); // space between numbers
+                value = value * (i - j) / (j + 1);
+            }
+
+            // 3️⃣ Move to next line
+            System.out.println();
+        }
+    }
+}
 
