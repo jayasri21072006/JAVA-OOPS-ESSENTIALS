@@ -510,6 +510,30 @@ Explanation: The value decreases until it is greater or equal to 0. After that i
 }
 
 
+2.pascals triangle Given a positive integer n, return the nth row of pascal's triangle.
+Pascal's triangle is a triangular array of the binomial coefficients formed by summing up the elements of previous row.
 
+
+import java.util.*;
+class Solution {
+    ArrayList<Integer> nthRowOfPascalTriangle(int n) {
+        ArrayList<Integer>result=new ArrayList<>();
+       result.add(1);
+       int formula=1;
+        for(int i=1;i<n-1;i++){
+          formula=formula*(n-i)/i;
+          result.add(formula);
+          
+            
+        }
+        if (n!=1){
+        result.add(1);}
+        
+        return result;
+        
+    }
+}
+
+    
 
 
