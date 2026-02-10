@@ -701,3 +701,62 @@ Sample Output 2:
 
 
 
+
+
+
+
+
+
+
+You are given an array with unique elements of stalls[], which denote the positions of stalls. You are also given an integer k which denotes the number of aggressive cows. The task is to assign stalls to k cows such that the minimum distance between any two of them is the maximum possible.
+
+
+
+
+
+
+import java.util.Arrays;
+
+class Solution {
+
+    public int aggressiveCows(int[] stalls, int k) {
+        Arrays.sort(stalls);
+
+        int low = 1;
+        int high = stalls[stalls.length - 1] - stalls[0];
+        int answer = 0;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (canPlace(stalls, k, mid)) {
+                answer = mid;
+                low = mid + 1;   // try larger distance
+            } else {
+                high = mid - 1;  // try smaller distance
+            }
+        }
+
+        return answer;
+    }
+
+    private boolean canPlace(int[] stalls, int k, int distance) {
+        int count = 1; // first cow placed
+        int lastPosition = stalls[0];
+
+        for (int i = 1; i < stalls.length; i++) {
+            if (stalls[i] - lastPosition >= distance) {
+                count++;
+                lastPosition = stalls[i];
+
+                if (count == k)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+
