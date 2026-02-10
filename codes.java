@@ -924,4 +924,74 @@ class Solution {
     }
 }
 
+split Array Largest Sum
+Difficulty: HardAccuracy: 58.9%Submissions: 64K+Points: 8
+Given an array arr[] and an integer k, divide the array into k contiguous subarrays such that the maximum sum among these subarrays is minimized. Find this minimum possible maximum sum.
 
+Examples:
+
+Input: arr[] = [1, 2, 3, 4], k = 3
+Output: 4
+Explanation: Optimal Split is [1, 2], [3], [4]. Maximum sum of all subarrays is 4, which is minimum possible for 3 splits.
+Input: arr[] = [1, 1, 2], k = 2
+Output: 2
+Explanation: Splitting the array as [1, 1] and [2] is optimal. This results in a maximum sum subarray of 2.
+
+import java.util.*;
+
+class Solution {
+
+    public int minTime(int[] arr, int k) {
+        
+        int n = arr.length;
+        
+        // If painters are more than boards,
+        // still valid (some painters may remain idle)
+        
+        int low = 0;
+        int high = 0;
+        
+        // Define search space
+        for (int length : arr) {
+            low = Math.max(low, length);  // largest single board
+            high += length;               // total sum of boards
+        }
+
+        int answer = high;
+
+        // Binary Search
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (canPaint(arr, k, mid)) {
+                answer = mid;      // possible solution
+                high = mid - 1;    // try smaller maximum time
+            } else {
+                low = mid + 1;     // increase allowed time
+            }
+        }
+
+        return answer;
+    }
+
+    private boolean canPaint(int[] arr, int k, int maxTime) {
+        
+        int painterCount = 1;
+        int currentTime = 0;
+
+        for (int length : arr) {
+
+            if (currentTime + length > maxTime) {
+                painterCount++;
+                currentTime = length;
+
+                if (painterCount > k)
+                    return false;
+            } else {
+                currentTime += length;
+            }
+        }
+
+        return true;
+    }
+}
