@@ -708,6 +708,8 @@ Sample Output 2:
 
 SUPER IMPORTATNT QUESTION 
 
+
+    MAXIMIMIZE MIN/// MINIMIZE MAX SUMS::   approacgh binary search
 You are given an array with unique elements of stalls[], which denote the positions of stalls. You are also given an integer k which denotes the number of aggressive cows. The task is to assign stalls to k cows such that the minimum distance between any two of them is the maximum possible.
 
 
@@ -758,5 +760,83 @@ class Solution {
     }
 }
 
+
+
+
+
+
+
+Given an array arr[] of integers, where each element arr[i] represents the number of pages in the i-th book. You also have an integer k representing the number of students. The task is to allocate books to each student such that:
+
+Each student receives atleast one book.
+Each student is assigned a contiguous sequence of books.
+No book is assigned to more than one student.
+The objective is to minimize the maximum number of pages assigned to any student. In other words, out of all possible allocations, find the arrangement where the student who receives the most pages still has the smallest possible maximum.
+
+Note: If it is not possible to allocate books to all students, return -1.
+
+
+
+
+import java.util.*;
+
+class Solution {
+
+    public int findPages(int[] arr, int k) {
+        
+        int n = arr.length;
+        
+        // If students are more than books → impossible
+        if (k > n) return -1;
+
+        int low = 0;      // minimum possible maximum
+        int high = 0;     // maximum possible maximum
+        
+        // Calculate low and high
+        for (int pages : arr) {
+            low = Math.max(low, pages); // largest single book
+            high += pages;              // total sum of pages
+        }
+
+        int answer = -1;
+
+        // Binary Search
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (canAllocate(arr, k, mid)) {
+                answer = mid;        // possible solution
+                high = mid - 1;      // try smaller maximum
+            } else {
+                low = mid + 1;       // increase limit
+            }
+        }
+
+        return answer;
+    }
+
+    private boolean canAllocate(int[] arr, int k, int maxPages) {
+        
+        int studentCount = 1;
+        int currentPages = 0;
+
+        for (int pages : arr) {
+
+Examples:
+            // If adding this book exceeds maxPages
+            if (currentPages + pages > maxPages) {
+                studentCount++;
+                currentPages = pages;
+
+                if (studentCount > k)
+                    return false;
+            } else {
+                currentPages += pages;
+            }
+        }
+
+        return true;
+    }
+}
 
 
