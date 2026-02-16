@@ -1040,3 +1040,45 @@ Explanation: 4 is not present in Linked List.
         return false;
     }
 }
+
+
+
+
+
+
+Reverse a linked list
+Difficulty: EasyAccuracy: 73.11%Submissions: 381K+Points: 2Average Time: 30m
+You are given the head of a singly linked list. You have to reverse the linked list and return the head of the reversed list.
+
+Examples:
+
+Input:
+      
+Output: 4 -> 3 -> 2 -> 1
+Explanation: After reversing the linkedList
+      
+Input: 
+
+
+
+
+class Solution {
+    public Node reverseList(Node head) {
+        
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        
+        while (current != null) {
+            
+            next = current.next;   // Step 1: store next
+            
+            current.next = prev;   // Step 2: reverse link
+            
+            prev = current;        // Step 3: move prev forward
+            current = next;        // move current forward
+        }
+        
+        return prev;  // new head
+    }
+}
