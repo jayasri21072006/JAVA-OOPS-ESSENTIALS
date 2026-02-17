@@ -1082,3 +1082,68 @@ class Solution {
         return prev;  // new head
     }
 }
+
+
+
+
+
+
+Palindrome Linked List
+Difficulty: MediumAccuracy: 41.48%Submissions: 388K+Points: 4Average Time: 20m
+You are given the head of a singly linked list of positive integers. You have to check if the given linked list is palindrome or not.
+
+Examples:
+
+Input:
+   
+Output: true
+Explanation: The given linked list is 1 -> 2 -> 1 -> 1 -> 2 -> 1, which is a palindrome.
+Input:
+
+
+
+
+class Solution {
+    public boolean isPalindrome(Node head) {
+        
+        // Edge case
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        // Step 1: Find middle
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Step 2: Reverse second half
+        Node prev = null;
+        Node curr = slow;
+
+        while (curr != null) {
+            Node nextNode = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextNode;
+        }
+
+        // Step 3: Compare both halves
+        Node left = head;
+        Node right = prev;
+
+        while (right != null) {
+            if (left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+    }
+}
+
