@@ -1208,4 +1208,4 @@ they must step onto the merge point at the same time.
         return p1;
     }
 }
-
+[ 2 pointer approach]
