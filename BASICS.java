@@ -184,3 +184,12 @@ LINKED LIST DELETION::
         printList(head);
     }
 }
+
+
+
+
+1 -> 2 -> 3 -> 4 -> null
+2 -> 3 -> 4 -> null
+2 -> 3 -> null
+3 -> null
+null
