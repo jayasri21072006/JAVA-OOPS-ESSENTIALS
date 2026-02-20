@@ -1305,6 +1305,61 @@ Explanation: After deleting 1 from the linked list, we have remaining nodes as 2
 
 
 
+Count Pairs whose sum is equal to X
+Difficulty: EasyAccuracy: 39.61%Submissions: 112K+Points: 2Average Time: 20m
+Given two linked lists head1 and head2 with distinct elements, determine the count of all distinct pairs from both lists whose sum equals the given value x.
+
+Note: A valid pair would be in the form (x, y) where x is from the first linked list and y is from the second linked list. (1, 3) and (3, 1) are considered different.
+
+Examples:
+
+Input: head1 = 1->2->3->4->5->6, head2 = 11->12->13, x = 15
+
+Output: 3
+Explanation: There are total 3 pairs whose sum is 15 : (4,11) , (3,12) and (2,13)
+Input: head1 = 7->5->1->3, head2 = 3->5->2->8, x = 10
+
+Output: 2
+Explanation: There are total 2 pairs whose sum is 10 : (7,3) and (5,5)
+
+
+
+
+
+    import java.util.HashSet;
+
+class Solution {
+    // Function to count pairs in two linked lists whose sum is equal to x
+    public int countPairs(Node head1, Node head2, int x) {
+        
+        HashSet<Integer> set = new HashSet<>();
+        
+        // Store elements of second linked list
+        Node temp2 = head2;
+        while (temp2 != null) {
+            set.add(temp2.data);
+            temp2 = temp2.next;
+        }
+        
+        int count = 0;
+        
+        // Traverse first linked list
+        Node temp1 = head1;
+        while (temp1 != null) {
+            
+            int complement = x - temp1.data;
+            
+            if (set.contains(complement)) {
+                count++;
+            }
+            
+            temp1 = temp1.next;
+        }
+        
+        return count;
+    }
+}
+
 
 
 
