@@ -1361,5 +1361,106 @@ class Solution {
 }
 
 
+TORTOISE AND HARE ALGORITHM::
+    Detect Loop in linked list
+Difficulty: MediumAccuracy: 43.49%Submissions: 517K+Points: 4Average Time: 20m
+You are given the head of a singly linked list. You have to determine whether the given linked list contains a loop or not. A loop exists in a linked list if the next pointer of the last node points to any other node in the list (including itself), rather than being null.
+
+Note: Internally, pos(1 based index) is used to denote the position of the node that tail's next pointer is connected to. If pos = 0, it means the last node points to null. Note that pos is not passed as a parameter.
+
+Examples:
+
+Input: pos = 2,
+   
+Output: true
+Explanation: There exists a loop as last node is connected back to the second node.
+Input: pos = 0,
+   
+Output: false
+Explanation: There exists no loop in given linked list.
+
+
+
+    class Solution {
+    public boolean detectLoop(Node head) {
+        
+        if (head == null || head.next == null)
+            return false;
+        
+        Node slow = head;
+        Node fast = head;
+        
+        while (fast != null && fast.next != null) {
+            
+            slow = slow.next;          // move 1 step
+            fast = fast.next.next;     // move 2 steps
+            
+            if (slow == fast) {
+                return true;           // loop found
+            }
+        }
+        
+        return false;                  // no loop
+    }
+}
+
+
+
+
+Find length of Loop
+Difficulty: MediumAccuracy: 44.26%Submissions: 303K+Points: 4Average Time: 30m
+Given the head of a linked list, determine whether the list contains a loop. If a loop is present, return the number of nodes in the loop, otherwise return 0.
+
+Note: Internally, pos(1 based index) is used to denote the position of the node that tail's next pointer is connected to. If pos = 0, it means the last node points to null, indicating there is no loop. Note that pos is not passed as a parameter.
+
+Examples:
+
+Input: pos = 2,
+   
+Output: 4
+Explanation: There exists a loop in the linked list and the length of the loop is 4.
+Input: pos = 3,
+   
+Output: 3
+Explanation: The loop is from 19 to 10. So length of loop is 19 → 33 → 10 = 3.
+
+
+
+    class Solution {
+    public int lengthOfLoop(Node head) {
+        
+        if (head == null || head.next == null)
+            return 0;
+        
+        Node slow = head;
+        Node fast = head;
+        
+        // Step 1: Detect Loop
+        while (fast != null && fast.next != null) {
+            
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            // Loop detected
+            if (slow == fast) {
+                
+                int count = 1;
+                Node temp = slow.next;
+                
+                // Step 2: Count loop length
+                while (temp != slow) {
+                    count++;
+                    temp = temp.next;
+                }
+                
+                return count;
+            }
+        }
+        
+        // No loop
+        return 0;
+    }
+}
+
 
 
