@@ -1511,3 +1511,71 @@ Explanation: We can see that there exists a loop in the given linked list and th
     }
 }
 
+
+
+
+
+
+
+
+Remove loop in Linked List
+Difficulty: MediumAccuracy: 27.66%Submissions: 549K+Points: 4Average Time: 45m
+Given the head of a singly linked list, the task is to remove a cycle if present. A cycle exists when a node's next pointer points back to a previous node, forming a loop. Internally, a variable pos denotes the index of the node where the cycle starts, but it is not passed as a parameter. The terminal will print true if a cycle is removed otherwise, it will print false.
+
+Examples:
+
+Input: head = 1 -> 3 -> 4, pos = 2
+Output: true
+Explanation: The linked list looks like
+
+A loop is present in the list, and it is removed.
+
+
+
+
+    class Solution {
+    public void removeLoop(Node head) {
+
+        if (head == null || head.next == null)
+            return;
+
+        Node slow = head;
+        Node fast = head;
+
+        // Step 1: Detect loop
+        boolean hasLoop = false;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                hasLoop = true;
+                break;
+            }
+        }
+
+        if (!hasLoop)
+            return;
+
+        // Step 2: Find start of loop
+        slow = head;
+
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        Node loopStart = slow;
+
+        // Step 3: Find last node of loop
+        Node temp = loopStart;
+
+        while (temp.next != loopStart) {
+            temp = temp.next;
+        }
+
+        // Break the loop
+        temp.next = null;
+    }
+}
