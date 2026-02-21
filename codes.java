@@ -1464,3 +1464,50 @@ Explanation: The loop is from 19 to 10. So length of loop is 19 → 33 → 10 = 
 
 
 
+First Node of Loop in Linked List
+Difficulty: MediumAccuracy: 55.49%Submissions: 97K+Points: 4
+You are given the head of a singly linked list. If a loop is present in the linked list then return the first node of the loop else return -1.
+
+Note: Internally, pos(1 based index) is used to denote the position of the node that tail's next pointer is connected to. If pos = 0, it means the last node points to null, indicating there is no loop. Note that pos is not passed as a parameter.
+
+Examples:
+
+Input: pos = 2,
+   
+Output: 3
+Explanation: We can see that there exists a loop in the given linked list and the first node of the loop is 3.
+
+
+    class Solution {
+    public int cycleStart(Node head) {
+        
+        if (head == null || head.next == null)
+            return -1;
+        
+        Node slow = head;
+        Node fast = head;
+        
+        // Step 1: Detect Loop
+        while (fast != null && fast.next != null) {
+            
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            if (slow == fast) {
+                
+                // Step 2: Find Start of Loop
+                slow = head;
+                
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                
+                return slow.data;   // Return value of start node
+            }
+        }
+        
+        return -1;  // No loop
+    }
+}
+
