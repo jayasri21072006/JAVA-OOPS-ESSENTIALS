@@ -1579,3 +1579,60 @@ A loop is present in the list, and it is removed.
         temp.next = null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+Linked List Group Reverse
+Difficulty: HardAccuracy: 57.08%Submissions: 271K+Points: 8Average Time: 30m
+You are given the head of a Singly linked list. You have to reverse every k node in the linked list and return the head of the modified list.
+Note: If the number of nodes is not a multiple of k then the left-out nodes at the end, should be considered as a group and must be reversed.
+
+Examples:
+
+Input: k = 2,
+   
+
+Output: 2 -> 1 -> 4 -> 3 -> 6 -> 5
+Explanation: Linked List is reversed in a group of size k = 2.
+
+
+
+
+
+    
+
+class Solution {
+
+    public Node reverseKGroup(Node head, int k) {
+        if (head == null) return null;
+
+        Node temp = head;
+        Node prev = null;
+        Node front = null;
+        int count = 0;
+
+        // Reverse first k nodes
+        while (temp != null && count < k) {
+            front = temp.next;   // store next node
+            temp.next = prev;    // reverse link
+            prev = temp;         // move prev forward
+            temp = front;        // move temp forward
+            count++;
+        }
+
+        // Recursively reverse remaining list
+        if (temp != null) {
+            head.next = reverseKGroup(temp, k);
+        }
+
+        // prev becomes new head of this group
+        return prev;
+    }
+}
