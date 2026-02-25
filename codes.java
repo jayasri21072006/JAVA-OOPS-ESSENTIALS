@@ -1706,3 +1706,58 @@ class Solution {
         return zeroDummy.next;
     }
 }
+
+
+
+
+
+
+
+Pairwise swap elements of a linked list
+Difficulty: EasyAccuracy: 52.06%Submissions: 132K+Points: 2Average Time: 20m
+Given a singly linked list. The task is to swap elements in the linked list pairwise. For example, if the input list is 1 2 3 4, the resulting list after swaps will be 2 1 4 3.
+
+Note: You need to swap the nodes, not only the data. If only data is swapped then the driver code will print -1.
+
+Examples:
+
+Input: LinkedList: 1->2->2->4->5->6->7->8
+Output: 2->1->4->2->6->5->8->7
+
+
+
+
+
+    class Solution {
+    public Node pairwiseSwap(Node head) {
+        
+        if (head == null || head.next == null)
+            return head;
+
+        // New head will be second node
+        Node newHead = head.next;
+
+        Node prev = null;
+        Node current = head;
+
+        while (current != null && current.next != null) {
+
+            Node nextPair = current.next.next;
+            Node second = current.next;
+
+            // Swap
+            second.next = current;
+            current.next = nextPair;
+
+            if (prev != null) {
+                prev.next = second;
+            }
+
+            // Move prev and current
+            prev = current;
+            current = nextPair;
+        }
+
+        return newHead;
+    }
+}
