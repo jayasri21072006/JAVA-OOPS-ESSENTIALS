@@ -1761,3 +1761,62 @@ Output: 2->1->4->2->6->5->8->7
         return newHead;
     }
 }
+
+
+Merge two sorted linked lists
+Difficulty: MediumAccuracy: 62.91%Submissions: 206K+Points: 4Average Time: 30m
+Given the head of two sorted linked lists consisting of nodes respectively. Merge both lists and return the head of the sorted merged list.
+
+Examples:
+
+Input:
+  
+Output: 2 -> 3 -> 5 -> 10 -> 15 -> 20 -> 40
+Explanation:
+   
+Input:
+  
+Output: 1 -> 1 -> 2 -> 4
+Explanation:
+  
+Constraints:
+1 ≤ list1.size, list2.size ≤ 103
+0 ≤ node->data ≤ 105
+
+
+
+
+
+    class Solution {
+    public Node sortedMerge(Node head1, Node head2) {
+        
+        // Dummy node to simplify edge cases
+        Node dummy = new Node(-1);
+        Node tail = dummy;
+
+        Node t1 = head1;
+        Node t2 = head2;
+
+        while (t1 != null && t2 != null) {
+            
+            if (t1.data <= t2.data) {
+                tail.next = t1;
+                t1 = t1.next;
+            } else {
+                tail.next = t2;
+                t2 = t2.next;
+            }
+            
+            tail = tail.next;
+        }
+
+        // Attach remaining nodes
+        if (t1 != null) {
+            tail.next = t1;
+        } else {
+            tail.next = t2;
+        }
+
+        return dummy.next;
+    }
+}
