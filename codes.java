@@ -1817,6 +1817,51 @@ Constraints:
             tail.next = t2;
         }
 
+Remove duplicates from a linked list
+Difficulty: EasyAccuracy: 45.95%Submissions: 260K+Points: 2Average Time: 20m
+Given an unsorted linked list. The task is to remove duplicate elements from this unsorted Linked List. When a value appears in multiple nodes, the node which appeared first should be kept, all other duplicates are to be removed.
+
+Examples:
+
+Input: LinkedList: 5->2->2->4
+Output: 5->2->4
+Explanation: Given linked list elements are 5->2->2->4, in which 2 is repeated only. So, we will delete the extra repeated elements 2 from the linked list and the resultant linked list will contain 5->2->4
+
+
+
+
+    import java.util.HashSet;
+
+class Solution {
+    public Node removeDuplicates(Node head) {
+        
+        if (head == null)
+            return null;
+
+        HashSet<Integer> set = new HashSet<>();
+        
+        Node current = head;
+        Node prev = null;
+
+        while (current != null) {
+            
+            if (set.contains(current.data)) {
+                // Duplicate found → remove node
+                prev.next = current.next;
+            } else {
+                // First time seeing this value
+                set.add(current.data);
+                prev = current;
+            }
+            
+            current = current.next;
+        }
+
+        return head;
+    }
+}
+
+        
         return dummy.next;
     }
 }
