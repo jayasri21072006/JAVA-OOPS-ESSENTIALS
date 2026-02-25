@@ -2154,3 +2154,58 @@ pop2(): the stack2 is now empty hence returned -1.
         return stack[top];
     }
 }
+
+arenthesis Checker
+Difficulty: EasyAccuracy: 28.56%Submissions: 724K+Points: 2
+Given a string s, composed of different combinations of '(' , ')', '{', '}', '[', ']'. Determine whether the Expression is balanced or not.
+An expression is balanced if:
+
+Each opening bracket has a corresponding closing bracket of the same type.
+Opening brackets must be closed in the correct order.
+Examples :
+
+Input: s = "[{()}]"
+Output: true
+Explanation: All the brackets are well-formed.
+
+  import java.util.*;
+
+class Solution {
+    public boolean isBalanced(String s) {
+        
+        Stack<Character> stack = new Stack<>();
+        
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            
+            // If opening bracket, push to stack
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch);
+            }
+            // If closing bracket
+            else {
+                
+                // If stack is empty → no matching opening bracket
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                
+                char top = stack.pop();
+                
+                // Check matching pair
+                if ((ch == ')' && top != '(') ||
+                    (ch == '}' && top != '{') ||
+                    (ch == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        
+        // If stack is empty → balanced
+        return stack.isEmpty();
+    }
+}
+    
+
+
+
