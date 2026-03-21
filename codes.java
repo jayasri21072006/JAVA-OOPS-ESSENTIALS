@@ -1512,6 +1512,60 @@ Explanation: We can see that there exists a loop in the given linked list and th
 }
 
 
+Pair Sum in Doubly Linked List
+Difficulty: EasyAccuracy: 66.01%Submissions: 107K+Points: 2Average Time: 10m
+Given a sorted doubly linked list of positive distinct elements, the task is to find pairs in a doubly-linked list whose sum is equal to given value target.
+
+ 
+
+Example 1:
+
+Input:  
+1 <-> 2 <-> 4 <-> 5 <-> 6 <-> 8 <-> 9
+target = 7
+Output: (1, 6), (2,5)
+Explanation: We can see that there are two pairs 
+(1, 6) and (2,5) with sum 7.
+
+
+
+    class Solution {
+    public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+        if (head == null) return result;
+
+        // Step 1: Find tail (right pointer)
+        Node left = head;
+        Node right = head;
+        while (right.next != null) {
+            right = right.next;
+        }
+
+        // Step 2: Two pointer traversal
+        while (left != right && right.next != left) {
+            int sum = left.data + right.data;
+
+            if (sum == target) {
+                ArrayList<Integer> pair = new ArrayList<>();
+                pair.add(left.data);
+                pair.add(right.data);
+                result.add(pair);
+
+                left = left.next;    // move left forward
+                right = right.prev;  // move right backward
+
+            } else if (sum < target) {
+                left = left.next;    // need larger sum
+
+            } else {
+                right = right.prev;  // need smaller sum
+            }
+        }
+
+        return result;
+    }
+}
 
 
 
