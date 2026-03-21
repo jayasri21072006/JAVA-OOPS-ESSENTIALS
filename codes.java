@@ -2942,5 +2942,43 @@ class Solution {
 }
 
 
+culty: MediumAccuracy: 69.19%Submissions: 173K+Points: 4Average Time: 20m
+Given a stack of integers st[]. Sort the stack in ascending order (smallest element at the bottom and largest at the top).
+
+Examples:
+
+Input: st[] = [1, 2, 3]
+Output: [3, 2, 1]
+Explanation: The stack is already sorted in ascending
+
+
+
+    import java.util.Stack;
+
+class Solution {
+
+    public static void sortStack(Stack<Integer> st) {
+        if (st.isEmpty()) {
+            return;
+        }
+
+        int top = st.pop();
+        sortStack(st);
+        insertSorted(st, top);
+    }
+
+    private static void insertSorted(Stack<Integer> st, int x) {
+        if (st.isEmpty() || st.peek() <= x) {
+            st.push(x);
+            return;
+        }
+
+        int top = st.pop();
+        insertSorted(st, x);
+        st.push(top);
+    }
+}
+
+
 
     
