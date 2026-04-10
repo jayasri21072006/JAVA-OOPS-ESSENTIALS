@@ -3358,3 +3358,52 @@ class Solution {
         return totalCost;
     }
 }
+
+
+Nearly sorted
+Difficulty: MediumAccuracy: 75.25%Submissions: 92K+Points: 4Average Time: 30m
+Given an array arr[], where each element is at most k positions away from its correct position in the sorted order.
+Your task is to restore the sorted order of arr[] by rearranging the elements in place.
+
+Note: Don't use any sort() method.
+
+Examples:
+
+Input: arr[] = [2, 3, 1, 4], k = 2
+Output: [1, 2, 3, 4]
+Explanation: All elements are at most k = 2 positions away from their correct positions.
+Element 1 moves from index 2 to 0
+Element 2 moves from index 0 to 1
+Element 3 moves from index 1 to 2
+Element 4 stays at index 3
+Input: arr[]= [7, 9, 14], k = 1
+
+    import java.util.PriorityQueue;
+
+class Solution {
+    public void nearlySorted(int[] arr, int k) {
+        int n = arr.length;
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        int index = 0;
+
+        for (int i = 0; i <= k && i < n; i++) {
+            pq.add(arr[i]);
+        }
+      
+
+
+        for (int i = k + 1; i < n; i++) {
+         
+
+            pq.add(arr[i]);        
+        }
+
+       
+        while (!pq.isEmpty()) {
+            arr[index] = pq.poll();
+            index++;
+        }
+    }
+}
