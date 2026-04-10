@@ -3315,3 +3315,46 @@ class LRUCache {
         }
     }
 }
+
+
+
+Minimum Cost of ropes
+Difficulty: MediumAccuracy: 42.73%Submissions: 277K+Points: 4
+Given an array, arr[] of rope lengths, connect all ropes into a single rope with the minimum total cost. The cost to connect two ropes is the sum of their lengths. 
+
+Examples:
+
+Input: arr[] = [4, 3, 2, 6]
+Output: 29
+Explanation: First connect 2 and 3 to get [4, 5, 6] with a cost of 5, then connect 4 and 5 to get [9, 6] with a cost of 9, and finally connect 9 and 6 to get one rope with a cost of 15, giving a total minimum cost of 29. Any other order, such as connecting 4 and 6 first, results in a higher total cost of 38.
+
+
+    import java.util.*;
+
+class Solution {
+    public static int minCost(int[] arr) {
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        // Step 1: add all ropes
+        for (int val : arr) {
+            pq.add(val);
+        }
+        
+        int totalCost = 0;
+        
+        // Step 2: process until one rope remains
+        while (pq.size() > 1) {
+            
+            int first = pq.poll();   // smallest
+            int second = pq.poll();  // second smallest
+            
+            int sum = first + second;
+            totalCost += sum;
+            
+            pq.add(sum); // push back
+        }
+        
+        return totalCost;
+    }
+}
