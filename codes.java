@@ -3232,3 +3232,86 @@ Explanation: After reversing t
         return head;
     }
 }
+
+
+
+lru cache:
+    import java.util.*;
+
+class LRUCache {
+
+    class Node {
+        int key, value;
+        Node prev, next;
+
+        Node(int k, int v) {
+            key = k;
+            value = v;
+        }
+    }
+
+    int capacity;
+    HashMap<Integer, Node> map;
+    Node head, tail;
+
+    LRUCache(int cap) {
+        capacity = cap;
+        map = new HashMap<>();
+
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    // Remove node
+    void deleteNode(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    // Insert right after head
+    void addToFront(Node node) {
+        node.next = head.next;
+        node.prev = head;
+
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    public int get(int key) {
+        if (!map.containsKey(key)) {
+            return -1;
+        }
+
+        Node node = map.get(key);
+
+        deleteNode(node);
+        addToFront(node);
+
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            node.value = value;
+
+            deleteNode(node);
+            addToFront(node);
+        } else {
+
+            if (map.size() == capacity) {
+                Node lru = tail.prev;
+                deleteNode(lru);
+                map.remove(lru.key);
+            }
+
+            Node newNode = new Node(key, value);
+            addToFront(newNode);
+            map.put(key, newNode);
+        }
+    }
+}
