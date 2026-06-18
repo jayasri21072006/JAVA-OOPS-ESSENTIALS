@@ -85,3 +85,29 @@ I Love You
 
 3
 I Love You
+
+
+
+    recurrsion:
+
+
+public class main{
+    public static void main(String args[]){
+        int ans =add(1,3);
+        System.out.println(ans);
+        System.out.println("I Love You");
+    }
+    public static int add(int a,int b){
+        System.out.println(a+b);
+        if(a>0){
+        add(a-1,b);
+        }
+   
+     return 0;
+    }
+}
+
+4
+3
+0
+I Love You
