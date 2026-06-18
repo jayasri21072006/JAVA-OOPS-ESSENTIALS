@@ -66,3 +66,22 @@ I Love You
 
 6
 I Love You
+
+
+
+
+
+    public class main{
+    public static void main(String args[]){
+        int ans =add();
+        System.out.println(ans);
+        System.out.println("I Love You");
+    }
+    public static int add(){
+   
+     return 1+2;
+    }
+}
+
+3
+I Love You
