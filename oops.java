@@ -14,3 +14,25 @@ public class main{
 
 26
 I Love You
+
+
+
+
+
+
+
+
+    public class main{
+    public static void main(String args[]){
+        add(2,4);
+        System.out.println("I Love You");
+    }
+    public static void add(int a,int b){
+   
+        System.out.println(a+b);
+    }
+}
+
+
+6
+I Love You
