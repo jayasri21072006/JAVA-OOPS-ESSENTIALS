@@ -1,0 +1,277 @@
+# `final` Keyword in Java
+
+`final` means **cannot be changed**.
+It can be used with:
+1. Variable
+2. Method
+3. Class
+
+---
+
+## 1. Final Variable
+
+```java
+class Main {
+    public static void main(String[] args) {
+        final int age = 21;
+        // age = 22;  // Error
+        System.out.println(age);
+    }
+}
+```
+
+### Output
+```
+21
+```
+
+Once assigned, the value cannot be changed.
+
+---
+
+## 2. Final Method
+
+```java
+class Father {
+    final void property() {
+        System.out.println("Father's property");
+    }
+}
+
+class Son extends Father {
+    // void property() { }  // Error
+}
+```
+
+A `final` method **cannot be overridden** by a child class.
+
+---
+
+## 3. Final Class
+
+```java
+final class Father {
+}
+
+class Son extends Father { } // Error
+```
+
+A `final` class **cannot be inherited**.
+
+---
+
+## Simple Example
+
+```java
+final class Animal {
+    void eat() {
+        System.out.println("Eating");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        a.eat();
+    }
+}
+```
+
+### Output
+```
+Eating
+```
+
+---
+
+## Easy Memory Trick
+
+```
+final variable → value cannot change
+final method   → cannot override
+final class    → cannot inherit
+```
+
+---
+
+## Interview Definition
+
+**The `final` keyword is used to restrict modification. A final variable cannot be reassigned, a final method cannot be overridden, and a final class cannot be extended.** 🚀
+
+
+
+
+
+
+
+
+
+# `super` Keyword in Java
+
+`super` refers to the parent class object.
+It is mainly used to:
+
+1. Access parent class variables
+2. Access parent class methods
+3. Call parent class constructor
+
+---
+
+## 1. Access Parent Class Method
+
+```java
+class Father {
+    void property() {
+        System.out.println("Father's property");
+    }
+}
+
+class Son extends Father {
+    void show() {
+        super.property();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.show();
+    }
+}
+```
+
+### Output
+```
+Father's property
+```
+
+---
+
+## 2. Access Parent Class Variable
+
+```java
+class Father {
+    int money = 10000;
+}
+
+class Son extends Father {
+    int money = 5000;
+
+    void display() {
+        System.out.println(super.money);
+        System.out.println(money);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.display();
+    }
+}
+```
+
+### Output
+```
+10000
+5000
+```
+
+- `super.money` → Parent's variable
+- `money` → Child's variable
+
+---
+
+## 3. Call Parent Constructor
+
+```java
+class Father {
+    Father() {
+        System.out.println("Father Constructor");
+    }
+}
+
+class Son extends Father {
+    Son() {
+        super();
+        System.out.println("Son Constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Son s = new Son();
+    }
+}
+```
+
+### Output
+```
+Father Constructor
+Son Constructor
+```
+
+---
+
+## Complete Example
+
+```java
+class Father {
+    int money = 10000;
+
+    Father() {
+        System.out.println("Father Constructor");
+    }
+
+    void property() {
+        System.out.println("Father's Property");
+    }
+}
+
+class Son extends Father {
+    int money = 5000;
+
+    Son() {
+        super();
+        System.out.println("Son Constructor");
+    }
+
+    void display() {
+        System.out.println("Father Money = " + super.money);
+        System.out.println("Son Money = " + money);
+        super.property();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Son s = new Son();
+        s.display();
+    }
+}
+```
+
+### Output
+```
+Father Constructor
+Son Constructor
+Father Money = 10000
+Son Money = 5000
+Father's Property
+```
+
+---
+
+## Easy Memory Trick
+
+```
+super.variable  → Parent variable
+super.method()  → Parent method
+super()         → Parent constructor
+```
+
+---
+
+## Interview Definition
+
+**The `super` keyword is used to refer to the immediate parent class object. It can be used to access parent class variables, methods, and constructors.** 🚀
