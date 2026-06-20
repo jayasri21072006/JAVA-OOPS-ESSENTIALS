@@ -1,0 +1,49 @@
+class Father {
+
+    static void call() {
+        System.out.println("Calling Father");
+    }
+
+    public void calling() {
+        System.out.println("Calling Mother");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+       Father.call();
+
+    }
+} 
+
+
+without object here we accesed the function of a class as it was static
+
+
+class Father {
+    static char  gender='M';
+    static void call() {
+        System.out.println("Calling Father");
+    }
+
+    public void calling() {
+        System.out.println("Calling Mother");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+       Father.call();
+       System.out.println(Father.gender);
+
+    }
+}
+
+Calling Father
+M
+
+
