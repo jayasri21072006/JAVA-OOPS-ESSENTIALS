@@ -91,3 +91,40 @@ Son owns the property now
 
 
 
+Hierarchical Inheritance 
+
+One Parent
+   /   \
+Child Child
+
+
+class Grandfather {
+    void property() {
+        System.out.println("Grandfather's property ids common to both son and grandson");
+    }
+}
+
+class Dad extends Grandfather {
+
+}
+
+class Son extends Grandfather {
+    void properties() {
+        System.out.println("Son owns the property now");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Son obj = new Son();
+        Dad obj1=new Dad();
+        obj.properties();
+        obj1.property();
+    }
+}
+
+
+Son owns the property now
+Grandfather's property ids common to both son and grandson
+
