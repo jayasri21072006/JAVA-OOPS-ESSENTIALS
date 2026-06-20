@@ -128,3 +128,51 @@ public class Main {
 Son owns the property now
 Grandfather's property ids common to both son and grandson
 
+
+
+
+Hybrid Inheritance in Java
+
+        Grandfather
+        /         \
+      Dad        Uncle
+       |
+       |
+      Son
+
+
+
+
+
+
+class Grandfather {
+    void property() {
+        System.out.println("Grandfather's property");
+    }
+}
+
+class Dad extends Grandfather {
+}
+
+class Uncle extends Grandfather {
+}
+
+class Son extends Dad {
+    void bike() {
+        System.out.println("Son owns a bike");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Son s = new Son();
+
+        s.property();
+        s.bike();
+    }
+}
+
+
+Grandfather's property
+Son owns a bike
