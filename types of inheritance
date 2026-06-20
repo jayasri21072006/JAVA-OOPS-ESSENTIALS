@@ -28,3 +28,66 @@ public class Main {
 Output
 Animal is eating
 Dog is barking
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Multilevel Inheritance.
+
+Your inheritance chain is:
+
+Grandfather
+     ↑
+     |
+    Dad
+     ↑
+     |
+    Son
+
+
+class Grandfather {
+    void property() {
+        System.out.println("Grandfather's property");
+    }
+}
+
+class Dad extends Grandfather {
+
+}
+
+class Son extends Dad {
+    void propertes() {
+        System.out.println("Son owns the property now");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Son obj = new Son();
+        obj.property();
+        obj.propertes();
+    }
+}
+
+
+
+Grandfather's property
+Son owns the property now
+
+
+
