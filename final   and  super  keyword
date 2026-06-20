@@ -275,3 +275,182 @@ super()         → Parent constructor
 ## Interview Definition
 
 **The `super` keyword is used to refer to the immediate parent class object. It can be used to access parent class variables, methods, and constructors.** 🚀
+
+
+
+
+
+# `this` Keyword in Java
+
+`this` refers to the **current object**.
+It is mainly used to:
+1. Access current class variables
+2. Call current class methods
+3. Call current class constructor
+
+---
+
+## 1. Access Current Class Variable
+
+```java
+class Student {
+    String name;
+
+    Student(String name) {
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println(this.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student("Jayasri");
+        s.display();
+    }
+}
+```
+
+### Output
+```
+Jayasri
+```
+
+### Why `this`?
+
+```java
+Student(String name) {
+    this.name = name;
+}
+```
+
+- `this.name` → instance variable
+- `name` → constructor parameter
+
+---
+
+## 2. Call Current Class Method
+
+```java
+class Student {
+    void study() {
+        System.out.println("Studying");
+    }
+
+    void display() {
+        this.study();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.display();
+    }
+}
+```
+
+### Output
+```
+Studying
+```
+
+---
+
+## 3. Call Current Class Constructor
+
+```java
+class Student {
+    Student() {
+        this("Jayasri");
+        System.out.println("Default Constructor");
+    }
+
+    Student(String name) {
+        System.out.println(name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+    }
+}
+```
+
+### Output
+```
+Jayasri
+Default Constructor
+```
+
+---
+
+## Complete Example
+
+```java
+class Student {
+    String name;
+
+    Student() {
+        this("Jayasri");
+    }
+
+    Student(String name) {
+        this.name = name;
+    }
+
+    void show() {
+        this.display();
+    }
+
+    void display() {
+        System.out.println(this.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.show();
+    }
+}
+```
+
+### Output
+```
+Jayasri
+```
+
+---
+
+## `this` vs `super`
+
+| `this`         | `super`        |
+| -------------- | -------------- |
+| Current object | Parent object  |
+| `this.name`    | `super.name`   |
+| `this.show()`  | `super.show()` |
+| `this()`       | `super()`      |
+
+---
+
+## Easy Memory Trick
+
+```
+this.variable → Current class variable
+this.method() → Current class method
+this()        → Current class constructor
+```
+
+---
+
+## Interview Definition
+
+**The `this` keyword refers to the current object of a class. It is used to access current class variables, methods, and constructors.** 🚀
+
+
+
+
