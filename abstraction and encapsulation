@@ -1,0 +1,33 @@
+Encapsulation in Java (Simple Example)
+
+Encapsulation = Hiding data using private variables and accessing them using getter and setter methods.
+
+
+
+class func {
+
+    String name;
+
+    public String getname() {
+        return name;
+    }
+
+    public void setname(String nam) {
+        name = nam;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        func s = new func();
+
+        s.setname("jayasri");
+
+        System.out.println(s.getname());
+    }
+}
+
+
+
+jayasri
