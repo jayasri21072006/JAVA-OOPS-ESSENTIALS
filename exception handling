@@ -30,3 +30,29 @@ class Main {
 
 
 zero division errorjava.lang.ArithmeticException: / by zero
+
+
+
+
+
+
+
+
+class Main {
+    public static void main(String[] args) {
+        try{
+            System.out.println(5/0);
+        }
+        catch(Exception E){
+            System.out.println("zero division error"+E);
+        }
+        finally{
+            System.out.println("All case handled");
+        }
+}
+}
+
+
+
+zero division errorjava.lang.ArithmeticException: / by zero
+All case handled
