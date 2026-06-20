@@ -1,0 +1,65 @@
+Simple Polymorphism in Java
+
+Polymorphism = "Many Forms"
+
+The same method name can behave differently depending on the object.
+
+
+Method Overloading (Compile-Time Polymorphism
+
+class Maths {
+
+    void add(int a, int b) {
+        System.out.println(a + b);
+    }
+
+    void add(int a, int b, int c) {
+        System.out.println(a + b + c);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Maths m = new Maths();
+
+        m.add(10, 20);
+        m.add(10, 20, 30);
+    }
+}
+
+
+
+30
+60
+
+
+
+
+
+Method Overriding (Runtime Polymorphism)
+
+class Animal {
+
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Animal a = new Dog();
+        a.sound();
+    }
+}
+
+
+Dog barks
