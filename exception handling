@@ -56,3 +56,41 @@ class Main {
 
 zero division errorjava.lang.ArithmeticException: / by zero
 All case handled
+
+
+
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        try {
+
+            int a = 5 / 0;
+
+            String s = null;
+            System.out.println(s.length());
+
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero: " + e);
+        }
+        catch (NullPointerException e) {
+            System.out.println("Null value found: " + e);
+        }
+        catch (Exception e) {
+            System.out.println("Some other exception occurred: " + e);
+        }
+        finally {
+            System.out.println("All cases handled");
+        }
+    }
+}
+
+
+Cannot divide by zero: java.lang.ArithmeticException: / by zero
+All cases handled
+
+
+
+
