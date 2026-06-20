@@ -1,0 +1,14 @@
+
+class Main {
+    public static void main(String[] args) {
+        try{
+            System.out.println(5/0);
+        }
+        catch(ArithmeticException E){
+            System.out.println("zero division error"+E);
+        }
+}
+}
+
+
+zero division errorjava.lang.ArithmeticException: / by zero
