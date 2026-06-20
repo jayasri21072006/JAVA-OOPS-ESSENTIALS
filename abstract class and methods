@@ -1,0 +1,37 @@
+abstract class can have both abstract methods and normal methods.
+
+
+
+abstract class Vehicle {
+
+    // Abstract method
+    abstract void start();
+
+    // Normal method
+    void stop() {
+        System.out.println("Vehicle stopped");
+    }
+}
+
+class Car extends Vehicle {
+
+    void start() {
+        System.out.println("Car starts with key");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Car c = new Car();
+
+        c.start();
+        c.stop();
+    }
+}
+
+
+
+
+Car starts with key
+Vehicle stopped
