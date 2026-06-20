@@ -1,0 +1,99 @@
+# `final` Keyword in Java
+
+`final` means **cannot be changed**.
+It can be used with:
+1. Variable
+2. Method
+3. Class
+
+---
+
+## 1. Final Variable
+
+```java
+class Main {
+    public static void main(String[] args) {
+        final int age = 21;
+        // age = 22;  // Error
+        System.out.println(age);
+    }
+}
+```
+
+### Output
+```
+21
+```
+
+Once assigned, the value cannot be changed.
+
+---
+
+## 2. Final Method
+
+```java
+class Father {
+    final void property() {
+        System.out.println("Father's property");
+    }
+}
+
+class Son extends Father {
+    // void property() { }  // Error
+}
+```
+
+A `final` method **cannot be overridden** by a child class.
+
+---
+
+## 3. Final Class
+
+```java
+final class Father {
+}
+
+class Son extends Father { } // Error
+```
+
+A `final` class **cannot be inherited**.
+
+---
+
+## Simple Example
+
+```java
+final class Animal {
+    void eat() {
+        System.out.println("Eating");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        a.eat();
+    }
+}
+```
+
+### Output
+```
+Eating
+```
+
+---
+
+## Easy Memory Trick
+
+```
+final variable → value cannot change
+final method   → cannot override
+final class    → cannot inherit
+```
+
+---
+
+## Interview Definition
+
+**The `final` keyword is used to restrict modification. A final variable cannot be reassigned, a final method cannot be overridden, and a final class cannot be extended.** 🚀
