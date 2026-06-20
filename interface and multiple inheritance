@@ -1,3 +1,5 @@
+Interface:
+
 interface Father {
 
    abstract void call();
@@ -19,4 +21,53 @@ public class Main {
     }
 }
 
+
+
 Interface for multiple inheritance
+
+
+
+
+
+interface Father {
+
+   abstract void call();
+}
+
+interface Mother {
+
+    abstract void calling();
+}
+
+class Interfaces implements Father, Mother {
+
+    public void call() {
+        System.out.println("Calling Father");
+    }
+
+    public void calling() {
+        System.out.println("Calling Mother");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Interfaces obj = new Interfaces();
+
+        obj.call();
+        obj.calling();
+    }
+}
+
+
+
+Father      Mother
+    \        /
+     \      /
+    Interfaces
+
+
+Calling Father
+Calling Mother
