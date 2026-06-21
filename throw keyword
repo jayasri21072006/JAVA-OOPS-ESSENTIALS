@@ -22,3 +22,34 @@ class Main {
     }
 
 Division by zero error
+
+
+
+
+
+
+
+
+class Throwing {
+
+    void check() {
+        throw new ArithmeticException("Division by zero error");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        Throwing obj = new Throwing();
+
+        try {
+            obj.check();
+        }
+        catch (ArithmeticException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+
+java.lang.ArithmeticException: Division by zero error
