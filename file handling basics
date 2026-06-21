@@ -22,3 +22,31 @@ public class Main {
         }
     }
 }
+
+
+
+
+
+Writing a file:
+
+
+
+import java.io.FileWriter;
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+       try{
+        File f=new File("c:\\Users\\Jayasri t\\Downloads\\AI Operating System for Organizations.docx");
+        FileWriter fe=new FileWriter("f");
+        fe.write("Iam writing");
+        fe.close();
+
+       
+
+       }
+       catch(exception e){
+        System.out.println("An error");
+       }
+    }
+}
+
