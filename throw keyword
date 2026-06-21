@@ -53,3 +53,48 @@ class Main {
 
 
 java.lang.ArithmeticException: Division by zero error
+
+
+
+
+if you want a user-defined exception using throws, here is the simplest example
+
+class MyException extends Exception {
+
+    MyException(String message) {
+        super(message);
+    }
+}
+
+class Test {
+
+    void checkAge(int age) throws MyException {
+
+        if (age < 18) {
+            throw new MyException("Not eligible to vote");
+        }
+
+        System.out.println("Eligible to vote");
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Test obj = new Test();
+
+        try {
+            obj.checkAge(16);
+        }
+        catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+
+Not eligible to vote
+
+
