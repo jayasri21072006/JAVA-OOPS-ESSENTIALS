@@ -98,3 +98,49 @@ class Main {
 Not eligible to vote
 
 
+
+
+
+class MyException extends Exception {
+
+    MyException(String message) {
+        super(message);
+    }
+}
+
+class Test {
+
+    void divide(int a, int b) throws MyException {
+
+        if (b == 0) {
+            throw new MyException("Denominator cannot be zero");
+        }
+        else {
+            int result = a / b;
+            System.out.println("Result = " + result);
+        }
+    }
+}
+
+class Main {
+
+    public static void main(String[] args) {
+
+        Test obj = new Test();
+
+        try {
+            obj.divide(10, 0);
+        }
+        catch (MyException e) {
+            System.out.println("User Defined Exception: " + e.getMessage());
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: " + e.getMessage());
+        }
+    }
+}
+
+Not eligible to vote
+
+
+
