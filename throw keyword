@@ -1,0 +1,24 @@
+throw → used to throw an exception object.
+
+
+class Throwing {
+
+    void check() {
+        throw new ArithmeticException("Division by zero error");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        Throwing obj = new Throwing();
+
+        try {
+            obj.check();
+        }
+        catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+Division by zero error
