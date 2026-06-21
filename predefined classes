@@ -1,0 +1,40 @@
+`Integer` class provides several utility methods to convert numbers between different formats and data types. `toString()` converts an integer into its String representation, while `toBinaryString()`, `toOctalString()`, and `toHexString()` convert a decimal number into binary, octal, and hexadecimal formats respectively. To convert a numeric String back into an integer, Java provides `valueOf()` and `parseInt()`. The `valueOf()` method returns an `Integer` object, whereas `parseInt()` returns a primitive `int`. These methods are commonly used in Java for number conversion, data processing, and handling different number systems efficiently.
+
+
+
+
+
+
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+      String s=Integer.toString(10);
+      System.out.println(s);
+      String h=Integer.toBinaryString(15);
+      System.out.println(h);
+      
+      int i=Integer.valueOf(h);//it willl return an object of the class
+      System.out.println(i);
+      
+      int k=Integer.parseInt(h);//it will return dtye
+      System.out.println(k);
+      
+      
+      String r=Integer.toOctalString(15);
+      System.out.println(r);
+      
+      String h1=Integer.toHexString(15);
+      System.out.println(h1);
+    }
+}
+
+
+10
+1111
+1111
+1111
+17
+f
+
+
