@@ -43,3 +43,26 @@ class Main {
 f
 
 
+
+
+This below program demonstrates several commonly used String and Wrapper Class methods in Java. 
+It converts a String into a character array using toCharArray(), accesses individual characters using both charAt() and array indexing, and compares Strings using the equals() method. The program also shows how to convert a numeric String into a primitive double using Double.parseDouble(). These operations are frequently used in Java for string manipulation, 
+character processing, data validation, and converting text-based input into numeric values for calculation
+
+
+
+class Main {
+    public static void main(String[] args) {
+  String s="hello world";
+  
+  System.out.println(s.toCharArray());
+ 
+  System.out.println(s.charAt(0));
+  char [] arr=s.toCharArray();
+  System.out.println(arr[0]);
+  System.out.println(s.equals("hello"));
+  String d="3.66777";
+  System.out.println(Double.parseDouble(d));
+    }
+}
+
